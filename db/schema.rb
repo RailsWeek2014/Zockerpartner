@@ -11,14 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905085022) do
+ActiveRecord::Schema.define(version: 20140904133416) do
 
   create_table "comments", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "friends", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,17 +42,12 @@ ActiveRecord::Schema.define(version: 20140905085022) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", force: true do |t|
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "name",                   default: "", null: false
-    t.integer  "age",                    default: 0,  null: false
+    t.integer  "age",                                 null: false
+    t.integer  "user_comments_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
