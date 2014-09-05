@@ -1,4 +1,5 @@
 class GameUser < ActiveRecord::Base
-	belongs_to :Game
-	belongs_to :User
+	belongs_to :game
+	belongs_to :user
+	has_many :comments
 end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :user_comments
+
+  resources :comments
+
+  resources :friends
+
   root to: "welcome#index"
 
   get 'welcome/index'
