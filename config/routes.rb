@@ -5,15 +5,17 @@ Rails.application.routes.draw do
 
   resources :friends
 
-  root to: "welcome#index"
-
   get 'welcome/index'
+
+  resources :home
 
   resources :game_users
 
   resources :games
 
   devise_for :users
+
+  root to: "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+	<p>
+		<%= link_to "Abmelden", destroy_user_session_path, :method => :delete %>
+	</p>
+<% else %>
+	<p>
+		<%= link_to "Benutzerkonto erstellen", new_user_registration_path, :method => :get %>
+	</p>
+
+	<p>
+		<%= link_to "Anmelden", new_user_session_path, :method => :get %>
+	</p>
+<% end %>
+
 <%= yield %>
 
 </body>
