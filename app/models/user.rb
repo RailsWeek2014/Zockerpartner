@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	#has_and_belongs_to_many :friends
 	has_many :friendships
 	has_many :friends, through: :friendships
+	has_many :comments
+	has_many :GameUsers, through: :comments
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
