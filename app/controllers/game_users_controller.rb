@@ -5,6 +5,7 @@ class GameUsersController < ApplicationController
   # GET /game_users
   # GET /game_users.json
   def index
+    @users = User.all
     @game_users = GameUser.all
   end
 

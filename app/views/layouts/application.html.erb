@@ -9,9 +9,30 @@
 <body>
 
 <% if user_signed_in? %>
-	<p>
+	<small>
+		Angemeldet als: <%=current_user.name %>
 		<%= link_to "Abmelden", destroy_user_session_path, :method => :delete %>
-	</p>
+	</small>
+	<div id="navi" class="textWhite">
+		<table>
+			<tr>
+				<td>
+				<%= link_to "Userliste", game_users_path, :method => :get %>
+				</td>
+				<td>
+				<%= link_to "Gamesliste", games_path, :method => :get %>
+				</td>
+				<td>
+				<%= link_to "Profil", profiles_path, :method => :get %>
+				</td>
+				<td>
+				<%= link_to "Freundesliste", friends_path, :method => :get %>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
 <% else %>
 	<p>
 		<%= link_to "Benutzerkonto erstellen", new_user_registration_path, :method => :get %>
@@ -20,6 +41,7 @@
 	<p>
 		<%= link_to "Anmelden", new_user_session_path, :method => :get %>
 	</p>
+
 <% end %>
 
 <%= yield %>

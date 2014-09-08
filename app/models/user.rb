@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :friendships
 	has_many :friends, through: :friendships
 	has_many :comments
+	#nochmal schauen:
 	has_many :GameUsers, through: :comments
 
   # Include default devise modules. Others available are:

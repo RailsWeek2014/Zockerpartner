@@ -5,7 +5,8 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
-    @friends = Friend.all
+    @friends = Friendship.all
+    @users = User.all
   end
 
   # GET /friends/1
@@ -15,7 +16,7 @@ class FriendsController < ApplicationController
 
   # GET /friends/new
   def new
-    @friend = Friend.new
+    @friend = Friendship.new
   end
 
   # GET /friends/1/edit
@@ -25,7 +26,7 @@ class FriendsController < ApplicationController
   # POST /friends
   # POST /friends.json
   def create
-    @friend = Friend.new(friend_params)
+    @friend = Friendship.new(friend_params)
 
     respond_to do |format|
       if @friend.save
@@ -65,7 +66,7 @@ class FriendsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
-      @friend = Friend.find(params[:id])
+      @friend = Friendship.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

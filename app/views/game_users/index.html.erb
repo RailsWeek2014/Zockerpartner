@@ -1,4 +1,4 @@
-<h1>Listing game_users</h1>
+<h1>Spielerliste</h1>
 
 <table>
   <thead>
@@ -8,13 +8,23 @@
   </thead>
 
   <tbody>
-    <% @game_users.each do |game_user| %>
+    <% @users.each do |users| %>
       <tr>
-        <td><%= link_to 'Show', game_user %></td>
-        <td><%= link_to 'Edit', edit_game_user_path(game_user) %></td>
-        <td><%= link_to 'Destroy', game_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= users.name %>: </td>
+        <% x = users.id %>
+
+        <% @game_users.each do |y| %>
+          <%if x == y.user_id %>
+            <td><%= y.game.name %>, </td>
+          <% end %>
+        <% end %>
+        
+
       </tr>
     <% end %>
+
+
+
   </tbody>
 </table>
 

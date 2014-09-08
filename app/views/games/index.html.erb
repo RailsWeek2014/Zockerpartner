@@ -1,4 +1,4 @@
-<h1>Listing games</h1>
+<h1>Games</h1>
 
 <table>
   <thead>
@@ -11,6 +11,8 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
+      <!-- Link auf game.icon setzen für liste aller Spieler -->
+        <td style="background-image: url(<%= game.icon %>); background-size: 100% 100% !important;"></td>
         <td><%= game.name %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>

@@ -8,17 +8,20 @@
 
 #User aEinträge nlegen
 pw1 = "12345678"
+icon = "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png"
 u1 = User.create(email: "yysfsfsyy@wer.de", name: "Olaf", age: 21, password: pw1, password_confirmation: pw1)
 u2 = User.create(email: "yyyy@wer.de", name: "Peter", age: 29, password: pw1, password_confirmation: pw1)
+u3 = User.create(email: "Peter@thm.de", name: "Sinth", age: 29, password: pw1, password_confirmation: pw1, description: "bla bla bla ein beschreibungstext erscheint in dieser textarea jonge", avatar: icon)
 
 #Freundschaften von Usern anlegen
-f = Friendship.create(user: u1, friend: u2)
-f2 = Friendship.create(user: u2, friend: u1)
+f = Friendship.create(user_id: u1.id, friend_id: u2.id)
+f2 = Friendship.create(user_id: u2.id, friend_id: u1.id)
 
 #Spiele Einträge anlegen
-Game.create(name: "LOL")
-Game.create(name: "CS")
-Game.create(name: "BF3")
+Game.create(name: "LOL", icon: "http://bloodfighters.de/picture.php?id=19")
+Game.create(name: "CS", icon: "http://hypesrus.com/files/counter-strike-global-offensive-cs-go-logo.jpg")
+Game.create(name: "BF3", icon: "http://img1.wikia.nocookie.net/__cb20110920165739/battlefield/it/images/thumb/4/40/BF3_Logo_Horizontal.png/640px-BF3_Logo_Horizontal.png")
+Game.create(name: "Quake Live", icon: "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png")
 
 #User spiel Spiele Einträge anlegen
 GameUser.create(user_id: 1, game_id: 1)
@@ -26,6 +29,7 @@ GameUser.create(user_id: 1, game_id: 2)
 GameUser.create(user_id: 1, game_id: 3)
 GameUser.create(user_id: 2, game_id: 2)
 GameUser.create(user_id: 2, game_id: 3)
+
 
 #Kommentare
 Comment.create(user_id: 1, gameuser_id: 4, comment: "NOOB + flamer")
