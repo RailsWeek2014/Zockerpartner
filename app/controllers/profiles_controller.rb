@@ -4,4 +4,9 @@ class ProfilesController < ApplicationController
 		@game_users = GameUser.all
 	end
 
+	def show
+	    @profile = User.find(params[:id])
+	    @game_users = GameUser.all
+	end
+
 end

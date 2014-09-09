@@ -13,8 +13,7 @@
       <tr>
       <!-- Link auf game.icon setzen für liste aller Spieler -->
         <td style="background-image: url(<%= game.icon %>); background-size: 100% 100% !important;"></td>
-        <td><%= game.name %></td>
-        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to game.name, game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

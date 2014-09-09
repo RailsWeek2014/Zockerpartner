@@ -8,18 +8,38 @@
   </thead>
 
   <tbody>
-    <% @users.each do |users| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= users.name %>: </td>
-        <% x = users.id %>
+        <td><%= link_to user.name , profile_path(user.id) %>: </td>
+        <% x = user.id %>
 
         <% @game_users.each do |y| %>
           <%if x == y.user_id %>
             <td><%= y.game.name %>, </td>
           <% end %>
         <% end %>
-        
+        <!-- DEBUG AUSGABEN
+        <td>
+          <%= "current_user.friend? user #{current_user.friend? user}" %>
+            <%= "current_user.friend_request_incoming? user #{current_user.friend_request_incoming? user}" %>
+            <%= "current_user.friend_request_sent? user #{current_user.friend_request_sent? user}" %>
+        </td>
+        -->
+        <td>
+            <% if current_user.friend? user %>
+              <%= link_to 'Destroy', friend_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% elsif current_user.friend_request_incoming? user %>
+              <%= link_to "accept friend request", add_user_path(user) %>
+            <% elsif current_user.friend_request_sent? user %>
+              request sent
+            <% elsif user.id == current_user.id %>
+              <!-- Nichts bei einem selbst -->
+            <% else %>
+              <%= link_to "add friend", add_user_path(user) %>
+            <% end %>
 
+          
+        </td>
       </tr>
     <% end %>
 

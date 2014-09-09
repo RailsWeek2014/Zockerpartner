@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :friends
+  resources :friends, only: [:index, :destroy]
 
   get 'welcome/index'
 
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :profiles
 
   devise_for :users
+
+  get 'game_user/add_user/:id' => 'game_users#add_user' , as: 'add_user'
 
   root to: "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -16,6 +16,7 @@ u3 = User.create(email: "Peter@thm.de", name: "Sinth", age: 29, password: pw1, p
 #Freundschaften von Usern anlegen
 f = Friendship.create(user_id: u1.id, friend_id: u2.id)
 f2 = Friendship.create(user_id: u2.id, friend_id: u1.id)
+f3 = Friendship.create(user_id: u3.id, friend_id: u1.id)
 
 #Spiele Einträge anlegen
 Game.create(name: "LOL", icon: "http://bloodfighters.de/picture.php?id=19")

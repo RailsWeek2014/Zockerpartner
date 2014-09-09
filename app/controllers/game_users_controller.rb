@@ -7,6 +7,27 @@ class GameUsersController < ApplicationController
   def index
     @users = User.all
     @game_users = GameUser.all
+    #@friends = Friendship.all
+    @current_user = current_user
+    @friends = current_user.friends
+    @friendships = Friendship.all
+  end
+
+  def add_user
+    puts "XXXXXXXXXXXXXX #{params[:id]}"
+    @friend = Friendship.new
+    @friend.user_id = current_user.id
+    @friend.friend_id = params[:id]
+    #respond_to do |format|
+      if @friend.save
+        #format.html { redirect_to game_users_path, notice: 'Game user was successfully created.' }
+        #format.json { render :show, status: :created, location: game_users_path }
+        redirect_to friends_path
+      else
+        #format.html { render :new }
+        #format.json { render json: game_users_path.errors, status: :unprocessable_entity }
+      end
+    #end 
   end
 
   # GET /game_users/1
@@ -73,4 +94,9 @@ class GameUsersController < ApplicationController
     def game_user_params
       params[:game_user]
     end
+
+    #def friendship_user_params
+    #  params.require(:friendship).permit(:friend_id, :user_id)
+    #end
+
 end

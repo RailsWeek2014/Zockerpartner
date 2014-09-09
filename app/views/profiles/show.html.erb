@@ -1,0 +1,24 @@
+<h1><%=@profile.name %>'s Profile</h1>
+<% u = @profile %>
+
+<p>Name: <%= u.name %></p>
+<p>Age: <%= u.age %></p>
+
+<table>
+  <tbody>
+   
+      <tr>
+        <% x = u.id %>
+        Games: 
+        <% @game_users.each do |y| %>
+          <%if x == y.user_id %>
+            <td><%= y.game.name %>, </td>
+          <% end %>
+        <% end %>
+        
+
+      </tr>
+	</tbody>
+</table>
+
+<p><%=u.description%>
