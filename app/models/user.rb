@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :comments
 	#nochmal schauen:
 	has_many :GameUsers, through: :comments
+	has_many :ratings
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

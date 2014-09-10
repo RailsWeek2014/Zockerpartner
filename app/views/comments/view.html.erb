@@ -1,0 +1,52 @@
+<!-- js source: http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/ -->
+<table>
+<thead>
+	<tr>
+		<th>Name</th>
+		<th>Logo</th>
+		<th>Rating</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>
+			<%= Game.find(@game_rating_user.game_id).name%>
+		</td>
+	
+		<td>
+			<img class="logos" src="<%= @logo %>"></img>
+		</td>
+
+		<td>
+			<!--<%=@rating%>-->
+			Your rating: 
+			<div class="user_star"></div><br>
+			Average rating:
+			<div id="star"></div>
+
+		</td>
+	</tr>
+</tbody>
+</table>
+
+
+<script>
+
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @game_rating_user.average_rating %>,
+    path: '/assets'
+  });
+
+  $('.user_star').raty({
+    score: <%= @rating_entry.score%>,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating_entry.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
+</script>

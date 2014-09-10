@@ -1,3 +1,5 @@
+
+
 <h1>Spielerliste</h1>
 
 <table>
@@ -7,27 +9,37 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody>  
     <% @users.each do |users| %>
       <tr>
         <td><%= users.name %>: </td>
+        
         <% x = users.id %>
-
+       
         <% @game_users.each do |y| %>
           <%if x == y.user_id %>
-            <td><%= y.game.name %>, </td>
+            <td>
+              <% if y.rating_id == nil %>
+                ]
+                <% else %>
+                <p>[<%= link_to y.game.name, usercomments_path(y.id, @ratings.find(y.rating_id).score, current_user.id) %> 
+                 -> Rating:
+                <% score = @ratings.find(y.rating_id).score %> ]</p>
+                <% stars_off = 5 - score %>
+                <% score.times do %>
+                  <img src="../assets/star-on.png"></img>
+                <% end %>
+                <% stars_off.times do %>
+                  <img src="../assets/star-off.png"></img>
+                <% end %><br>
+              <% end %>
+            </td>
           <% end %>
         <% end %>
-        
 
       </tr>
     <% end %>
-
-
-
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Game user', new_game_user_path %>

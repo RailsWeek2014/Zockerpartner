@@ -1,0 +1,22 @@
+
+
+//<!--#raty source http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/-->
+$('#star').raty({
+  readOnly: true,
+  <%= puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->view/ratings/update.js.erb" %>
+  score: <%= puts @game_user.average_rating %>
+  
+  path: '/assets'
+});
+
+$('#user_star').raty({
+  score: <%= @rating %>,
+  path: '/assets',
+  click: function(score, evt) {
+    $.ajax({
+      url: '/ratings/' + <%= @rating.id %>,
+      type: 'PATCH',
+      data: { score: score }
+    }).done(function (data){});
+  }
+});

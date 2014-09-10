@@ -9,24 +9,33 @@
 <body>
 
 <% if user_signed_in? %>
-	<small>
-		Angemeldet als: <%=current_user.name %>
-		<%= link_to "Abmelden", destroy_user_session_path, :method => :delete %>
-	</small>
-	<div id="navi" class="textWhite">
+	<div id="headinfo">
+		<small>
+			Angemeldet als: <%=current_user.name %>
+			<%= link_to "Abmelden", destroy_user_session_path, :method => :delete %>
+		</small>
+	</div>
+	<div id="navi" class="textWhite, gradient">
 		<table>
 			<tr>
 				<td>
-				<%= link_to "Userliste", game_users_path, :method => :get %>
+					<div class="button"><%= link_to "Userliste", game_users_path, :method => :get %>
+					</div>
 				</td>
 				<td>
+				<div class="button">
 				<%= link_to "Gamesliste", games_path, :method => :get %>
+				</div>
 				</td>
 				<td>
+				<div class="button">
 				<%= link_to "Profil", profiles_path, :method => :get %>
+				</div>
 				</td>
 				<td>
+				<div class="button">
 				<%= link_to "Freundesliste", friends_path, :method => :get %>
+				</div>
 				</td>
 			</tr>
 		</table>

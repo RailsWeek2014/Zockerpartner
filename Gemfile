@@ -42,3 +42,6 @@ gem 'devise'
 
 #Zeigt die DB visuell an
 gem 'railroady'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'byebug'

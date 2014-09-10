@@ -4,21 +4,20 @@
 <p>Name: <%= u.name %></p>
 <p>Age: <%= u.age %></p>
 
-<table>
-  <tbody>
-   
-      <tr>
-        <% x = u.id %>
-        Games: 
-        <% @game_users.each do |y| %>
-          <%if x == y.user_id %>
-            <td><%= y.game.name %>, </td>
-          <% end %>
-        <% end %>
-        
 
-      </tr>
-	</tbody>
+
+
+
+<% x = u.id %>
+Games: <br/>
+<% @game_users.each do |y| %>
+<%if x == y.user_id %>
+<%= y.game.name %><br/>
+<% end %>
+<% end %>
+
+
+
 </table>
 
 <p><%=u.description%>

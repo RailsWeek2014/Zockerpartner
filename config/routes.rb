@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :user_comments
 
+  get '/comments/:id, :score, :user', to: 'comments#view', as: 'usercomments'
+
   resources :comments
 
   resources :friends
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :game_users
 
+  resources :ratings, only: :update
+
   resources :games
 
   resources :profiles
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "welcome#index"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

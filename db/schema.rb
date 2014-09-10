@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904133416) do
+ActiveRecord::Schema.define(version: 20140909102551) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140904133416) do
   create_table "game_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "game_id"
+    t.integer  "rating_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,9 +43,21 @@ ActiveRecord::Schema.define(version: 20140904133416) do
   create_table "games", force: true do |t|
     t.string   "name"
     t.string   "icon"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "game_user_id"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "amount",       default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["game_user_id"], name: "index_ratings_on_game_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

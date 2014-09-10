@@ -19,5 +19,9 @@
 	background-color: #000000;
 }
 .textWhite{
-	color: #fff;
+	color: #fff!important;
+}
+#headinfo{
+	width:100%;
+	background-color: #DFDFDF;
 }

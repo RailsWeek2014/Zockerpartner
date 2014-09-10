@@ -7,6 +7,7 @@ class GameUsersController < ApplicationController
   def index
     @users = User.all
     @game_users = GameUser.all
+    @ratings = Rating.all
   end
 
   # GET /game_users/1

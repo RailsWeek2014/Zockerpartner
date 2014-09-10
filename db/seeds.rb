@@ -18,20 +18,32 @@ f = Friendship.create(user_id: u1.id, friend_id: u2.id)
 f2 = Friendship.create(user_id: u2.id, friend_id: u1.id)
 
 #Spiele Einträge anlegen
-Game.create(name: "LOL", icon: "http://bloodfighters.de/picture.php?id=19")
-Game.create(name: "CS", icon: "http://hypesrus.com/files/counter-strike-global-offensive-cs-go-logo.jpg")
-Game.create(name: "BF3", icon: "http://img1.wikia.nocookie.net/__cb20110920165739/battlefield/it/images/thumb/4/40/BF3_Logo_Horizontal.png/640px-BF3_Logo_Horizontal.png")
-Game.create(name: "Quake Live", icon: "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png")
+Game.create(name: "LOL", icon: "http://bloodfighters.de/picture.php?id=19", description: "Spielebeschreibung Textarea Spielebeschreibung Textarea Spielebeschreibung Textarea")
+Game.create(name: "CS", icon: "http://hypesrus.com/files/counter-strike-global-offensive-cs-go-logo.jpg", description: "Spielebeschreibung Textarea Spielebeschreibung Textarea Spielebeschreibung Textarea")
+Game.create(name: "BF3", icon: "http://img1.wikia.nocookie.net/__cb20110920165739/battlefield/it/images/thumb/4/40/BF3_Logo_Horizontal.png/640px-BF3_Logo_Horizontal.png", description: "Spielebeschreibung Textarea Spielebeschreibung Textarea Spielebeschreibung Textarea")
+Game.create(name: "Quake Live", icon: "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png", description: "Spielebeschreibung Textarea Spielebeschreibung Textarea Spielebeschreibung Textarea")
+
+#Ratings
+Rating.create(game_user_id: 1, score: 3, user_id: 2, amount: 0)
+Rating.create(game_user_id: 1, score: 3, user_id: 3, amount: 0)
+Rating.create(game_user_id: 1, score: 3, user_id: 2, amount: 0)
+Rating.create(game_user_id: 2, score: 2, user_id: 1, amount: 0)
+Rating.create(game_user_id: 2, score: 3, user_id: 1, amount: 0)
+Rating.create(game_user_id: 3, score: 3, user_id: 1, amount: 0)
+Rating.create(game_user_id: 3, score: 4, user_id: 1, amount: 0)
 
 #User spiel Spiele Einträge anlegen
-GameUser.create(user_id: 1, game_id: 1)
-GameUser.create(user_id: 1, game_id: 2)
-GameUser.create(user_id: 1, game_id: 3)
-GameUser.create(user_id: 2, game_id: 2)
-GameUser.create(user_id: 2, game_id: 3)
+GameUser.create(user_id: 1, game_id: 1, rating_id: 1)
+GameUser.create(user_id: 1, game_id: 2, rating_id: 2)
+GameUser.create(user_id: 1, game_id: 3, rating_id: 3)
+GameUser.create(user_id: 2, game_id: 2, rating_id: 4)
+GameUser.create(user_id: 2, game_id: 3, rating_id: 5)
+GameUser.create(user_id: 3, game_id: 3, rating_id: 6)
+GameUser.create(user_id: 3, game_id: 4, rating_id: 7)
 
 
 #Kommentare
 Comment.create(user_id: 1, gameuser_id: 4, comment: "NOOB + flamer")
 Comment.create(user_id: 1, gameuser_id: 5, comment: "Super Spieler + flamer")
 Comment.create(user_id: 2, gameuser_id: 1, comment: "Schlecht + freundlich")
+
