@@ -6,11 +6,29 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
+    @game_users = GameUser.all
+  end
+
+  def add_game
+    @game = GameUser.new
+    @game.user_id = current_user.id
+    @game.game_id = params[:id]
+    #respond_to do |format|
+      if @game.save
+        #format.html { redirect_to game_users_path, notice: 'Game user was successfully created.' }
+        #format.json { render :show, status: :created, location: game_users_path }
+        redirect_to games_path
+      else
+        #format.html { render :new }
+        #format.json { render json: game_users_path.errors, status: :unprocessable_entity }
+      end
+    #end 
   end
 
   # GET /games/1
   # GET /games/1.json
   def show
+    @game_users = GameUser.all
   end
 
   # GET /games/new

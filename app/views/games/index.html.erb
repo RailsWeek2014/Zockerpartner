@@ -13,16 +13,28 @@
     <% @games.each do |game| %>
       <tr>
       <!-- Link auf game.icon setzen für liste aller Spieler -->
-        <td style="background-image: url(<%= game.icon %>); background-size: 100% 100% !important;"></td>
-        <td><%= game.name %></td>
-        <td><%= game.description %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="background-image: url(<%= game.icon %>); background-size: 100% 100% !important;"></td>        
+        <td><%= link_to game.name, game %></td>  
+          <% if @game_users.where("user_id = ? AND game_id = ?", current_user.id, game.id).exists? %>
+            <td>
+              You play the game
+            </td>
+          <% else %>
+            <td><%= link_to "add game", add_game_path(game.id) %></td>
+          <% end %>
+          <td><%= game.description %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'New Game', new_game_path %>
+
+<% if current_user.admin? %>
+  <%= link_to 'New Game', new_game_path %>
+<% end %>
+

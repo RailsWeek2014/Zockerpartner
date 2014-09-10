@@ -9,16 +9,22 @@
 
   <tbody>
     <% @friends.each do |friend| %>
-      <tr>
-        <td><%= @users.find(friend.friend_id).name %></td>
-        <td><%= link_to 'Show', friends_path %></td>
-        <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
-        <td><%= link_to 'Destroy', friends_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if friend.friends.include? current_user %>
+        <tr>
+          <td>
+            <%= link_to friend.name, profile_path(friend.id) %>
+          </td>
+          <td>
+            <%#= link_to 'Edit', edit_friend_path(friend) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', friend_path(friend), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Friend', new_friend_path %>
