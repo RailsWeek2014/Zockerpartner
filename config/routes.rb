@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'game_user/add_user/:id' => 'game_users#add_user' , as: 'add_user'
 
+  get 'game/add_game/:id' => 'games#add_game' , as: 'add_game'
+
   root to: "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
