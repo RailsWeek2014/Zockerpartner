@@ -1,7 +1,12 @@
 <h1><%=current_user.name %>'s Profile</h1>
 <% u = @users.find_by_id(current_user.id) %>
 
-<p>Name: <%= u.name %></p>
+<p>
+  Name: <%= u.name %> 
+  <% if current_user.admin? %> 
+    (Admin)
+  <% end %>
+</p>
 <p>Age: <%= u.age %></p>
 
 <table>

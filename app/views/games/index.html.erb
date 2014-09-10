@@ -22,14 +22,16 @@
             <td><%= link_to "add game", add_game_path(game.id) %></td>
           <% end %>
 
-          
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Game', new_game_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Game', new_game_path %>
+<% end %>

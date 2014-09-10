@@ -1,7 +1,12 @@
 <h1><%=@profile.name %>'s Profile</h1>
 <% u = @profile %>
 
-<p>Name: <%= u.name %></p>
+<p>
+  Name: <%= u.name %>
+  <% if current_user.admin? %> 
+    (Admin)
+  <% end %>
+</p>
 <p>Age: <%= u.age %></p>
 
 <table>

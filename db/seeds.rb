@@ -9,9 +9,9 @@
 #User aEinträge nlegen
 pw1 = "12345678"
 icon = "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png"
-u1 = User.create(email: "yysfsfsyy@wer.de", name: "Olaf", age: 21, password: pw1, password_confirmation: pw1)
-u2 = User.create(email: "yyyy@wer.de", name: "Peter", age: 29, password: pw1, password_confirmation: pw1)
-u3 = User.create(email: "Peter@thm.de", name: "Sinth", age: 29, password: pw1, password_confirmation: pw1, description: "bla bla bla ein beschreibungstext erscheint in dieser textarea jonge", avatar: icon)
+u1 = User.create(email: "yysfsfsyy@wer.de", admin: false, name: "Olaf", age: 21, password: pw1, password_confirmation: pw1)
+u2 = User.create(email: "yyyy@wer.de", admin: true, name: "Peter", age: 29, password: pw1, password_confirmation: pw1)
+u3 = User.create(email: "Peter@thm.de", admin: false, name: "Sinth", age: 29, password: pw1, password_confirmation: pw1, description: "bla bla bla ein beschreibungstext erscheint in dieser textarea jonge", avatar: icon)
 
 #Freundschaften von Usern anlegen
 f = Friendship.create(user_id: u1.id, friend_id: u2.id)
