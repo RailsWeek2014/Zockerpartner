@@ -19,7 +19,7 @@ class GameUsersController < ApplicationController
     @friend.user_id = current_user.id
     @friend.friend_id = params[:id]
     #respond_to do |format|
-      if @friend.save
+    if @friend.save
         #format.html { redirect_to game_users_path, notice: 'Game user was successfully created.' }
         #format.json { render :show, status: :created, location: game_users_path }
         redirect_to friends_path
@@ -30,6 +30,13 @@ class GameUsersController < ApplicationController
     #end 
 
   end
+
+  def delete
+   @game_users = GameUser.where("user_id = ? AND game_id = ?", current_user.id, params[:format]).first
+   @game_users.update_column :deleted, true
+   redirect_to games_path
+  end
+
 
   # GET /game_users/1
   # GET /game_users/1.json
@@ -100,4 +107,4 @@ class GameUsersController < ApplicationController
     #  params.require(:friendship).permit(:friend_id, :user_id)
     #end
 
-end
+  end

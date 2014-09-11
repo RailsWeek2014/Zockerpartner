@@ -16,7 +16,7 @@
 <% x = u.id %>
 Games: <br/>
 <% @game_users.each do |y| %>
-<%if x == y.user_id %>
+<%if x == y.user_id && y.deleted == false %>
 <%= y.game.name %><br/>
 <% end %>
 <% end %>
@@ -25,4 +25,6 @@ Games: <br/>
 
 </table>
 
-<p><%=u.description%>
+<p><%=u.description%></p>
+
+<%= link_to "edit", edit_user_registration_path %>

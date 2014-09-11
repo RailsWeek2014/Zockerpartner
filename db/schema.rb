@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910115030) do
+ActiveRecord::Schema.define(version: 20140911080841) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20140910115030) do
     t.integer  "user_id"
     t.integer  "game_id"
     t.integer  "rating_id"
-    t.integer  "average",    default: 0, null: false
+    t.integer  "average",    default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",    default: false
   end
 
   create_table "games", force: true do |t|

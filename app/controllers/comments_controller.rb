@@ -13,13 +13,17 @@ class CommentsController < ApplicationController
   # raty source: http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/
   # raty jquery source: http://wbotelhos.com/raty
   def view
+    #:user ist auch eine id
     @current_user = User.find(params[:user])
     @game_rating_user = GameUser.find(params[:id])
     @comments = Comment.where("gameuser_id = ?", @game_rating_user.id)
     @logo = Game.find(@game_rating_user.game_id).icon
 
-    @rating_entry = Rating.where(game_user_id: @game_rating_user.id, user_id: @current_user.id).first unless @rating_entry = Rating.create(game_user_id: @game_rating_user.id, user_id: @current_user.id, score: 0)
-    @rating = Rating.find(@game_rating_user.rating_id).score
+    @rating_entry = Rating.where(game_user_id: @game_rating_user.id, user_id: @current_user.id).first 
+    unless 
+      @rating_entry = Rating.create(game_user_id: @game_rating_user.id, user_id: @current_user.id, score: 0)
+    end
+    #@rating = Rating.find(@game_rating_user.rating_id).score
   end
 
   # GET /comments/new

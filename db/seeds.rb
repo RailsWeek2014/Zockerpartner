@@ -28,8 +28,8 @@ Game.create(name: "Quake Live", icon: "http://images.wikia.com/quake/images/arch
 Rating.create(game_user_id: 1, score: 0, user_id: 2)
 
 #User spiel Spiele Einträge anlegen
-GameUser.create(user_id: 1, game_id: 1, rating_id: 1)
-GameUser.create(user_id: 1, game_id: 2, rating_id: 2)
+GameUser.create(user_id: 1, game_id: 1, rating_id: 1, deleted: true)
+GameUser.create(user_id: 1, game_id: 2, rating_id: 2, deleted: false)
 GameUser.create(user_id: 1, game_id: 3, rating_id: 3)
 GameUser.create(user_id: 2, game_id: 2, rating_id: 4)
 GameUser.create(user_id: 2, game_id: 3, rating_id: 5)

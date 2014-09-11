@@ -16,12 +16,12 @@
         <td><%= link_to user.name , profile_path(user.id) %>: </td>
         <% x = user.id %>
         <% @game_users.each do |y| %>
-          <%if x == y.user_id %>
+          <%if x == y.user_id && GameUser.all.where("user_id = ? AND game_id= ?", y.user_id, y.game_id).first.deleted == false %>
             <td>
               <!-- Spiele die neu erstellt werden müssen ein rating haben -->
-              <% if y.rating_id == nil %>
-                ]
-                <% else %>
+              <%# if y.rating_id == nil %>
+                <!-- ] -->
+                <%# else %>
                 <p>[<%= link_to y.game.name, usercomments_path(y.id, current_user.id) %> 
                  -> Rating:
                 <% score = y.average %> ]</p>
@@ -32,7 +32,7 @@
                 <% stars_off.times do %>
                   <img src="../assets/star-off.png"></img>
                 <% end %><br>
-              <% end %>
+              <%# end %>
             </td>
           <% end %>
         <% end %>

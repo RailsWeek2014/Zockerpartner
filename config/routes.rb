@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  post '/games' => 'game_users#delete', as: 'delete_game_from_user'
+
+  #post '/profiles/edit' => 'profiles#edit_profile', as: 'edit_current_user_profile'
+
   resources :user_comments
 
   get '/comments/:id, :user', to: 'comments#view', as: 'usercomments'

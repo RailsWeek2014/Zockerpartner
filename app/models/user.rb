@@ -1,12 +1,11 @@
 class User < ActiveRecord::Base
-	has_many :GameUsers
-	has_many :Games, through: :GameUsers
+	has_many :game_users
+	has_many :games, through: :game_users
 	#has_and_belongs_to_many :friends
 	has_many :friendships
 	has_many :friends, through: :friendships
 	has_many :comments
 	#nochmal schauen:
-	has_many :GameUsers, through: :comments
 	has_many :ratings
 
   # Include default devise modules. Others available are:
@@ -27,5 +26,10 @@ class User < ActiveRecord::Base
   def friend_request_incoming? user
   	not friends.include? user and user.friends.include? self
   end
+
+  #def plays_game? game
+  #  gu = game_users.where(game: game)
+  #  not gu.empty? && not gu.first.deleted?
+  #end
 
 end

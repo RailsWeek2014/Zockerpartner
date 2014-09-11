@@ -3,7 +3,7 @@
 
 <p>
   Name: <%= u.name %>
-  <% if current_user.admin? %> 
+  <% if u.admin? %> 
     (Admin)
   <% end %>
 </p>
@@ -16,7 +16,7 @@
         <% x = u.id %>
         Games: 
         <% @game_users.each do |y| %>
-          <%if x == y.user_id %>
+          <%if x == y.user_id && y.deleted == false %>
             <td><%= y.game.name %>, </td>
           <% end %>
         <% end %>
@@ -26,4 +26,5 @@
 	</tbody>
 </table>
 
-<p><%=u.description%>
+<p><%=u.description%></p>
+
