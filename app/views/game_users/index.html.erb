@@ -18,12 +18,13 @@
         <% @game_users.each do |y| %>
           <%if x == y.user_id && GameUser.all.where("user_id = ? AND game_id= ?", y.user_id, y.game_id).first.deleted == false %>
             <td>
-              <% if y.rating_id == nil %>
-                ]
-                <% else %>
-                <p>[<%= link_to y.game.name, usercomments_path(y.id, @ratings.find(y.rating_id).score, current_user.id) %> 
+              <!-- Spiele die neu erstellt werden müssen ein rating haben -->
+              <%# if y.rating_id == nil %>
+                <!-- ] -->
+                <%# else %>
+                <p>[<%= link_to y.game.name, usercomments_path(y.id, current_user.id) %> 
                  -> Rating:
-                <% score = @ratings.find(y.rating_id).score %> ]</p>
+                <% score = y.average %> ]</p>
                 <% stars_off = 5 - score %>
                 <% score.times do %>
                   <img src="../assets/star-on.png"></img>
@@ -31,7 +32,7 @@
                 <% stars_off.times do %>
                   <img src="../assets/star-off.png"></img>
                 <% end %><br>
-              <% end %>
+              <%# end %>
             </td>
           <% end %>
         <% end %>

@@ -4,8 +4,9 @@
 $('#star').raty({
   readOnly: true,
   <%= puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->view/ratings/update.js.erb" %>
-  score: <%= puts @game_user.average_rating %>
-  
+  <% averageval = @game_user.average_rating %>
+  score: <%= @game_user.average_rating %>
+  <% @game_user.update_attribute(:average, averageval) %>
   path: '/assets'
 });
 
