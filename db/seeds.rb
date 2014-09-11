@@ -25,13 +25,7 @@ Game.create(name: "BF3", icon: "http://img1.wikia.nocookie.net/__cb2011092016573
 Game.create(name: "Quake Live", icon: "http://images.wikia.com/quake/images/archive/3/3b/20100623110043!Quake_Live_Logo.png", description: "Spielebeschreibung Textarea Spielebeschreibung Textarea Spielebeschreibung Textarea")
 
 #Ratings
-Rating.create(game_user_id: 1, score: 3, user_id: 2, amount: 0)
-Rating.create(game_user_id: 1, score: 3, user_id: 3, amount: 0)
-Rating.create(game_user_id: 1, score: 3, user_id: 2, amount: 0)
-Rating.create(game_user_id: 2, score: 2, user_id: 1, amount: 0)
-Rating.create(game_user_id: 2, score: 3, user_id: 1, amount: 0)
-Rating.create(game_user_id: 3, score: 3, user_id: 1, amount: 0)
-Rating.create(game_user_id: 3, score: 4, user_id: 1, amount: 0)
+Rating.create(game_user_id: 1, score: 0, user_id: 2)
 
 #User spiel Spiele Einträge anlegen
 GameUser.create(user_id: 1, game_id: 1, rating_id: 1)
@@ -44,7 +38,7 @@ GameUser.create(user_id: 3, game_id: 4, rating_id: 7)
 
 
 #Kommentare
-Comment.create(user_id: 1, gameuser_id: 4, comment: "NOOB + flamer")
-Comment.create(user_id: 1, gameuser_id: 5, comment: "Super Spieler + flamer")
-Comment.create(user_id: 2, gameuser_id: 1, comment: "Schlecht + freundlich")
+Comment.create(user_id: 1, gameuser_id: 4, comment_text: "NOOB + flamer")
+Comment.create(user_id: 1, gameuser_id: 5, comment_text: "Super Spieler + flamer")
+Comment.create(user_id: 2, gameuser_id: 1, comment_text: "Schlecht + freundlich")
 

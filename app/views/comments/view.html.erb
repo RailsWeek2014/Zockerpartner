@@ -22,11 +22,39 @@
 			Your rating: 
 			<div class="user_star"></div><br>
 			Average rating:
-			<div id="star"></div>
-
+			<!-- <div id="star"></div> -->
+			<div> <% score = @game_rating_user.average %>
+             <% stars_off = 5 - score %>
+               <% score.times do %>
+                  <img src="../assets/star-on.png"></img>
+               <% end %>
+               <% stars_off.times do %>
+                  <img src="../assets/star-off.png"></img>
+               <% end %>
+            </div>
 		</td>
 	</tr>
 </tbody>
+</table>
+
+<p><%= link_to 'Leave a comment', new_comment_path(@game_rating_user.id)%>
+<table>
+	<thead>
+		<th>comments<th>
+	</thead>
+	<tbody>
+		<% if @comments.first.nil? %>
+		<% else %>
+			<% @comments.each do |comment| %>
+				<tr>
+					<td>	
+					<div class="commentHead"><h3><%= User.find(comment.user_id).name %> <small style="float:right;" ><%= comment.created_at %></small></h3></div>	
+					<small><%= comment.comment_text %></small>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
 </table>
 
 

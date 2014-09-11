@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :user_comments
 
-  get '/comments/:id, :score, :user', to: 'comments#view', as: 'usercomments'
+  get '/comments/:id, :user', to: 'comments#view', as: 'usercomments'
+
+  # get 'comments/:id, :game_user_id, :game_user_id', to: 'comments#new', as: 'addcomment'
 
   resources :comments
 

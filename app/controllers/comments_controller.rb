@@ -15,12 +15,11 @@ class CommentsController < ApplicationController
   def view
     @current_user = User.find(params[:user])
     @game_rating_user = GameUser.find(params[:id])
-    
+    @comments = Comment.where("gameuser_id = ?", @game_rating_user.id)
     @logo = Game.find(@game_rating_user.game_id).icon
-    @rating = Rating.find(@game_rating_user.rating_id).score
- 
-    @rating_entry = Rating.where(game_user_id: @game_rating_user.id, user_id: @current_user.id).first unless @rating_entry = Rating.create(game_user_id: @game_rating_user.id, user_id: @current_user.id, score: 0)
 
+    @rating_entry = Rating.where(game_user_id: @game_rating_user.id, user_id: @current_user.id).first unless @rating_entry = Rating.create(game_user_id: @game_rating_user.id, user_id: @current_user.id, score: 0)
+    @rating = Rating.find(@game_rating_user.rating_id).score
   end
 
   # GET /comments/new
@@ -35,7 +34,19 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+   # @text = params[:comment_text]
+   # @game_user = params[:game_user]
+   # @user_id = params[:user_id]
+
+    ##puts @text
+    #puts @game_user
+    #puts @user_id
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+
+    #@comment = Comment.new(:user_id => @user_id, :gameuser_id => @game_user, :comment_text => @text)
+    @comment = Comment.new(comment_params) 
+
 
     respond_to do |format|
       if @comment.save
@@ -80,7 +91,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params[:comment]
+      params.require(:comment).permit(:comment_text, :gameuser_id, :user_id)
     end
   
 end
