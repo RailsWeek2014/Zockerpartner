@@ -3,7 +3,7 @@
 
 <p>
   Name: <%= u.name %>
-  <% if current_user.admin? %> 
+  <% if u.admin? %> 
     (Admin)
   <% end %>
 </p>
@@ -26,4 +26,5 @@
 	</tbody>
 </table>
 
-<p><%=u.description%>
+<p><%=u.description%></p>
+
