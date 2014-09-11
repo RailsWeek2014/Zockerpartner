@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  post '/games' => 'game_users#delete', as: 'delete_game_from_user'
+
   resources :user_comments
 
   get '/comments/:id, :score, :user', to: 'comments#view', as: 'usercomments'
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   resources :game_users
 
   resources :ratings, only: :update
+
+  
 
   resources :games
 

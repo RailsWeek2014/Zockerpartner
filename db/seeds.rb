@@ -34,8 +34,8 @@ Rating.create(game_user_id: 3, score: 3, user_id: 1, amount: 0)
 Rating.create(game_user_id: 3, score: 4, user_id: 1, amount: 0)
 
 #User spiel Spiele Einträge anlegen
-GameUser.create(user_id: 1, game_id: 1, rating_id: 1)
-GameUser.create(user_id: 1, game_id: 2, rating_id: 2)
+GameUser.create(user_id: 1, game_id: 1, rating_id: 1, deleted: true)
+GameUser.create(user_id: 1, game_id: 2, rating_id: 2, deleted: false)
 GameUser.create(user_id: 1, game_id: 3, rating_id: 3)
 GameUser.create(user_id: 2, game_id: 2, rating_id: 4)
 GameUser.create(user_id: 2, game_id: 3, rating_id: 5)
