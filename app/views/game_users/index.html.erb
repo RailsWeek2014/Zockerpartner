@@ -54,10 +54,13 @@
               <!-- Nichts bei einem selbst -->
             <% else %>
               <%= link_to "add friend", add_user_path(user) %>
-            <% end %>
-
-          
+            <% end %>       
         </td>
+        <% if current_user.admin? %>
+          <td>
+              <%= button_to "Cancel account", profile_path(user.id), data: { confirm: "Are you sure?" }, method: :delete %>
+          </td>    
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -66,5 +69,6 @@
 
 <br>
 
-<%= link_to 'New Game user', new_game_user_path %>
-
+<% if current_user.admin? %>
+  <%= link_to 'New Game user', new_game_user_path %>
+<% end %>

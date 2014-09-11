@@ -9,4 +9,10 @@ class ProfilesController < ApplicationController
 	    @game_users = GameUser.all
 	end
 
+	def destroy
+		@profile = User.where("id = ?", params[:id]).first
+		@profile.destroy
+		redirect_to game_users_path
+	end
+
 end

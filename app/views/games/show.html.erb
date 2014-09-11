@@ -9,9 +9,12 @@
 		</td>
 	<% else %>
 		<td>
-			<%= link_to "add game", add_game_path(params[:id]) %>
+			You dont play the game
 		</td>
 	<% end %>
+	<br><br>
+	<strong>Description:</strong>
+	<%= @game.description %>
 
 </p>
 
