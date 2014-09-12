@@ -1,0 +1,23 @@
+<h1> Results for "<%= @search_input %>"</h1>
+
+<% @ausgabe = false %>
+
+<% if @results.nil? %>
+	<% @ausgabe = false %>
+<% else %>
+	<% @results.each do |result| %>
+		<% unless result.deleted? %>
+			<% @user = User.where("id = ?", result.user_id).first %>
+			<p>
+				<%= link_to @user.name , profile_path(@user.id) %>
+			</p>
+		<% else %>
+			<% @ausgabe = true %>
+		<% end %>
+	<% end %>
+<% end %>
+<% if @ausgabe == true %>
+	No user found
+<% end %>
+<br><br>
+<%= link_to "back", search_path %>

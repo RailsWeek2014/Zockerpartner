@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   post '/games' => 'game_users#delete', as: 'delete_game_from_user'
 
+  get 'game_user/search' => 'game_users#search', as: 'search'
+
+  post 'game_user/search_result' => 'game_users#search_result', as: 'result'
+
   #post '/profiles/edit' => 'profiles#edit_profile', as: 'edit_current_user_profile'
 
   resources :user_comments

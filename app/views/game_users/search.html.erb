@@ -1,0 +1,16 @@
+<h1> User search </h1>
+
+<%= @games.last.name %>
+<%= @search.last.id %>
+
+<!-- http://railscasts.com/episodes/37-simple-search-form -->
+<%= form_tag result_path, :method => 'post' do %>
+  Insert game name:
+  <p>
+     <div class="field">
+    	<%= text_field_tag :search, params[:search] %><br>
+    	<%= submit_tag "Search", :name => nil %>
+  	</div>
+  </p>
+
+<% end %>

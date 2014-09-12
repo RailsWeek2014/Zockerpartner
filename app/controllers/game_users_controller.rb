@@ -37,6 +37,21 @@ class GameUsersController < ApplicationController
    redirect_to games_path
   end
 
+  #einagbe seite
+  def search
+    @games = Game.all
+    @search = GameUser.all
+  end
+
+  def search_result
+    #http://railscasts.com/episodes/37-simple-search-form
+    @games = Game.search(params[:search]).first
+    @search_input = params[:search]
+    if @games.nil?
+    else
+      @results = GameUser.where("game_id = ?", @games.id)
+    end
+  end
 
   # GET /game_users/1
   # GET /game_users/1.json
