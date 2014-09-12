@@ -1,6 +1,11 @@
 <h1><%=current_user.name %>'s Profile</h1>
 <% u = @users.find_by_id(current_user.id) %>
 
+<% if u.avatar == nil %>
+<% else %>
+	<img class="logos" src="<%= u.avatar %>"></img>
+<% end %>
+
 <p>
   Name: <%= u.name %> 
   <% if current_user.admin? %> 
@@ -8,22 +13,17 @@
   <% end %>
 </p>
 <p>Age: <%= u.age %></p>
-
-
-
+<p>E-Mail: <%= u.email %></p>
 
 
 <% x = u.id %>
 Games: <br/>
 <% @game_users.each do |y| %>
 <%if x == y.user_id && y.deleted == false %>
-<%= y.game.name %><br/>
+<%= link_to y.game.name, usercomments_path(y.id, current_user.id) %><br/>
 <% end %>
 <% end %>
 
-
-
-</table>
 
 <p><%=u.description%></p>
 

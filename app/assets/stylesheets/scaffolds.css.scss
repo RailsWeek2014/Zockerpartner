@@ -22,7 +22,8 @@ p, ol, ul, td {
 }
 
 .commentHead{
-  width: 350px;
+  min-width: 350px;
+  width: 100%;
   height: 20px;
   background-color: #DFDFDF;
 }
